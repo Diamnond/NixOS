@@ -6,6 +6,9 @@
     brave
     thunderbird
     vscode
+    git
+    curl
+    htop
     
   ];
 }
