@@ -9,7 +9,7 @@
     git
     curl
     htop
-    
+    fastfetch
   ];
 }
 
