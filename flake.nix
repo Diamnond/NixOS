@@ -33,10 +33,18 @@
           ./hosts/nixos01/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
-      };nixos02 = nixpkgs.lib.nixosSystem {
+      };
+      nixos02 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/nixos02/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+      nixos04 = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/nixos04/configuration.nix
           inputs.home-manager.nixosModules.default
         ];
       };
