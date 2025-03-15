@@ -2,7 +2,7 @@
 
 # Variables
 REPO_URL="https://github.com/Diamnond/NixOS.git"
-HOSTNAME="nixos02"
+HOSTNAME=$1
 
 # Clone the repository to home the directory
 cd ~
