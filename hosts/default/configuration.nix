@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      ./../../modules/nix/default-apps.nix
     ];
 
   # Bootloader.
@@ -68,7 +69,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -93,17 +94,15 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
-      vscode
     ];
   };
 
   home-manager = {
     # also pass inputs to home-manager modules
-    specialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs; };
     users = {
       "dgm" = import ./home.nix;
-    }
+    };
   };
 
   # Install firefox.
@@ -116,9 +115,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    lf
-    brave # Brave Browser
+    #wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -132,10 +129,19 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = [ "dgm" ];
+      UseDns = true;
+      PermitRootLogin = "no";
+    };
+  };
+  
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
