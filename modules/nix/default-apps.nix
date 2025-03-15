@@ -10,6 +10,7 @@
     curl
     htop
     fastfetch
+    meld
   ];
 }
 
