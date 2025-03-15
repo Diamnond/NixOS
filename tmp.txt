@@ -4,6 +4,8 @@ git clone https://github.com/Diamnond/NixOS
 
 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
 
+
+nix-env --install wget
 wget https://raw.githubusercontent.com/Diamnond/NixOS/refs/heads/main/install.sh
 chmod +x install.sh
-./install.sh
+sudo ./install.sh
