@@ -11,6 +11,7 @@
     htop
     fastfetch
     meld
+    bottles
   ];
 }
 
