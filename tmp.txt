@@ -9,3 +9,6 @@ nix-env --install wget
 wget https://raw.githubusercontent.com/Diamnond/NixOS/refs/heads/main/install.sh
 chmod +x install.sh
 sudo ./install.sh
+
+
+sudo nixos-rebuild switch --flake github:owner/repo#your-hostname

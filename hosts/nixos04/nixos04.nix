@@ -2,11 +2,11 @@
 
 {  
   environment.systemPackages = with pkgs; [
-    protonplus
-    heroic
+    protonplus # GUI for managing proton versions
+    heroic # Epic Games Store  and GOG client
   ];
-  # Install steam
-  programs.steam.enable = true;
+  
+  programs.steam.enable = true; # Install steam
 
 }
 

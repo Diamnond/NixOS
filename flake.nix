@@ -2,8 +2,10 @@
   description = "Nixos config flake";
 
   inputs = {
+    # Official nixpkgs source unstable branch
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Home manager source
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +29,7 @@
           inputs.home-manager.nixosModules.default
         ];
       };
+
       nixos01 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
@@ -34,6 +37,7 @@
           inputs.home-manager.nixosModules.default
         ];
       };
+
       nixos02 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
@@ -41,6 +45,7 @@
           inputs.home-manager.nixosModules.default
         ];
       };
+      
       nixos04 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
